@@ -77,7 +77,7 @@
 </head>
 <body>
     <div class="con">
-        <button class="btn1" type="submit" onclick="myCreateFunction()">
+        <button class="btn1"  onclick="myCreateFunction()">
             Add a new Product
         </button>
         <br>
@@ -123,7 +123,18 @@
             cell3.innerHTML = "$" + document.getElementById("np").value;
             document.getElementById("con11").style.visibility = "visible";
             total = total + (document.getElementById("cu").value * document.getElementById("np").value);
-        }    
+        } 
+        else{
+            if(document.getElementById("pn").value == ""){
+                alert("Product name is missing");
+            }
+            else if(document.getElementById("cu").value == ""){
+                alert("Cost per unit is missing");
+            }
+            else{
+                alert("Number of products is missing");
+            }
+        }   
 }
 
     function caltot(){
