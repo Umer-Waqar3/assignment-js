@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            height: 100%;
+
+        }
+        button{
+            background-color: transparent;
+            color: white;
+            border: 5px solid blue;
+            border-radius: 10px;
+            padding: 15px 32px;
+            text-align: center;
+            font-family: "Josefin Sans", sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: blue;
+        }
+        .con{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            margin: auto;
+            height: 50vh;
+        }
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+            padding: 15px 32px;
+            text-align: center;
+            font-family: "Josefin Sans", sans-serif;
+            font-size: 16px;
+            margin: auto;
+        }
+        input{
+            padding: 15px 32px;
+            text-align: center;
+            font-family: "Josefin Sans", sans-serif;
+            font-size: 16px;
+            color: white;
+            border: 1px solid white;
+            background-color: transparent;
+            border-radius: 10px;
+            display: block;
+        }
+        .btn1{
+            margin-bottom: 10px;
+        }
+        .btn2{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        p{
+            display: inline;
+            padding: 15px 32px;
+            text-align: center;
+            font-family: "Josefin Sans", sans-serif;
+            font-size: 16px;
+            color: white;
+            border: 1px solid white;
+            background-color: transparent;
+            border-radius: 10px;
+            margin-left: 20px;
+        }
+        .con11{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <button class="btn1" type="submit" onclick="myCreateFunction()">
+            Add a new Product
+        </button>
+        <br>
+        <input type="text" id="pn" placeholder="Product Name" value="" required>
+        <br>
+        <input type="number" id="cu" placeholder="Cost per unit" value="" required>
+        <br>
+        <input type="number" id="np" placeholder="Number of products" value="" min="0" step="1" required>
+        <br>
+    <button class="btn2" onclick="clr()">
+        Clear All
+    </button>
+    <div class="con11" id="con11">
+        <button class="btn3" onclick="caltot()">
+            Calculate Total
+        </button>
+        <p id="total">: $</p>
+    </div>
+    </div>
+
+    <div class="con1">
+        <table id="myTable">
+            <tr>
+              <th>Product Name</th>
+              <th>Cost per unit</th>
+              <th>Number of products</th>
+            </tr>
+          </table>
+    </div>
+
+</body>
+<script>
+    var total = 0;
+    function myCreateFunction() {
+        if(document.getElementById("pn").value != "" && document.getElementById("cu").value != "" && document.getElementById("np").value != ""){
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(table.rows.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            cell1.innerHTML = document.getElementById("pn").value;
+            cell2.innerHTML = "$" + document.getElementById("cu").value;
+            cell3.innerHTML = "$" + document.getElementById("np").value;
+            document.getElementById("con11").style.visibility = "visible";
+            total = total + (document.getElementById("cu").value * document.getElementById("np").value);
+        }    
+}
+
+    function caltot(){
+        document.getElementById("total").innerHTML = ": $" + total;
+    }
+    function clr(){
+        document.getElementById("pn").value = "";
+        document.getElementById("cu").value = "";
+        document.getElementById("np").value = "";
+        total = 0;
+        document.getElementById("myTable").innerHTML = "<tr><th>Product Name</th><th>Cost per unit</th><th>Number of products</th></tr>"
+        document.getElementById("con11").style.visibility = "hidden";
+        document.getElementById("total").innerHTML = ": $";
+    }
+</script>
+</html>
