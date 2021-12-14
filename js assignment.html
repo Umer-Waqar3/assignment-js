@@ -120,7 +120,7 @@
             var cell3 = row.insertCell(2);
             cell1.innerHTML = document.getElementById("pn").value;
             cell2.innerHTML = "$" + document.getElementById("cu").value;
-            cell3.innerHTML = "$" + document.getElementById("np").value;
+            cell3.innerHTML = document.getElementById("np").value;
             document.getElementById("con11").style.visibility = "visible";
             total = total + (document.getElementById("cu").value * document.getElementById("np").value);
         } 
